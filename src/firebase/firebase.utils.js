@@ -1,6 +1,8 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { initializeApp } from "firebase/app";
 
 const config = {
   apiKey: "AIzaSyAizLuXeAfUok4YcJbAje7Px6mfZkvrNQM",
@@ -12,13 +14,16 @@ const config = {
   measurementId: "G-F6XC7C65YW"
 };
 
+const firebaseApp = initializeApp(config);
+
 firebase.initializeApp(config);
 
-export const auth = firebase.auth();
+export const auth = getAuth(firebaseApp);
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+const provider = new GoogleAuthProvider();
 
-// export default firebase;
+provider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () =>
+  signInWithPopup(auth, provider).then(result => {}).catch(() => {});
+export default firebase;
