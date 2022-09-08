@@ -3,8 +3,8 @@ import "./sign-in.styles.scss";
 
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
-
-import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithGoogle } from "../../firebase/firebase.utils";
 
 class SignIn extends React.Component {
   constructor() {
@@ -22,11 +22,12 @@ class SignIn extends React.Component {
     const { email, password } = this.state;
 
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      const auth = getAuth();
+      await signInWithEmailAndPassword(auth, email, password);
 
       this.setState({ email: "", password: "" });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
