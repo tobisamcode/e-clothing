@@ -1,6 +1,6 @@
 import React from "react";
-
-import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserProfileDocument } from "../../firebase/firebase.utils";
 import CustomButton from "../custom-button/custom-button.component";
 import FormInput from "../form-input/form-input.component";
 
@@ -29,10 +29,8 @@ class SignUp extends React.Component {
     }
 
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+      const auth = getAuth();
+      const { user } = createUserWithEmailAndPassword(auth, email, password);
 
       await createUserProfileDocument(user, { displayName });
 
@@ -60,7 +58,7 @@ class SignUp extends React.Component {
       <div className="sign-up">
         <h2 className="title">I do not have an account</h2>
         <span>Sign up with your email and password</span>
-        <form className="sign-up-form">
+        <form className="sign-up-form" onSubmit={this.handleSubmit}>
           <FormInput
             type="text"
             name="displayName"
