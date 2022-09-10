@@ -45,7 +45,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <Header currentUser={this.state.currentUser} />
+          <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
