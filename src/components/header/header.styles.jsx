@@ -12,14 +12,14 @@ export const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 25px;
   border-bottom: 1px solid rgb(204, 197, 197);
 `;
 
 export const LogoContainer = styled(Link)`
   height: 100%;
-  width: 70px;
-  padding: 25px;
+  width: 80px;
 `;
 
 export const OptionContainer = styled.div`
