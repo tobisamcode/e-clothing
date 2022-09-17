@@ -28,7 +28,7 @@ const Header = ({ currentUser, hidden }) => {
         {currentUser ? (
           <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
         ) : (
-          <OptionLink to="/signin">SING ok</OptionLink>
+          <OptionLink to="/signin">SING IN</OptionLink>
         )}
         <CartIcon />
       </OptionContainer>
