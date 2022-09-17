@@ -26,20 +26,14 @@ const Header = ({ currentUser, hidden }) => {
       </LogoContainer>
       <OptionContainer>
         <OptionLink to="/shop">SHOP</OptionLink>
-        <OptionLink className="option" to="/ contact">
-          CONTACT
-        </OptionLink>
+        <OptionLink to="/contact">CONTACT</OptionLink>
         {currentUser ? (
-          <OptionDiv className="option" onClick={() => auth.signOut()}>
-            SIGN OUT
-          </OptionDiv>
+          <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
         ) : (
-          <OptionLink className="option" to="/signin">
-            SING IN
-          </OptionLink>
+          <OptionLink to="/signin">SING IN</OptionLink>
         )}
         <CartIcon />
-      </OptionContainer>{" "}
+      </OptionContainer>
       {hidden ? null : <CartDropdown />}
     </HeaderContainer>
   );
