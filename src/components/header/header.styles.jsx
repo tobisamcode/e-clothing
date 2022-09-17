@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { css } from "styled-components";
 
-export const OptionContainerStyles = css`
+const OptionContainerStyles = css`
   padding: 10px 15px;
   cursor: pointer;
 `;
