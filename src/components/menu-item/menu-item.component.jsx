@@ -11,14 +11,14 @@ const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
   const navigate = useNavigate();
 
   return (
-    <MenuItemContainer onClick={() => navigate(`${linkUrl}`)}>
+    <MenuItemContainer size={size} onClick={() => navigate(`${linkUrl}`)}>
       <ImageBackgroundContainer
+        className="background-image"
         style={{
           backgroundImage: `url(${imageUrl})`
         }}
-        className="background-image"
       ></ImageBackgroundContainer>
-      <ContentContainer>
+      <ContentContainer className="content">
         <ContentTitle>{title.toUpperCase()}</ContentTitle>
         <ContentSubtitle>SHOP NOW</ContentSubtitle>
       </ContentContainer>
