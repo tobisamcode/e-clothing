@@ -40,7 +40,6 @@ class App extends React.Component {
 
       setCurrentUser(userAuth);
       addCollectionAndDocuments("collections", collections);
-      console.log(collections);
     });
   }
   componentWillUnmount() {
