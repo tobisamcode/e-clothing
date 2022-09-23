@@ -22,7 +22,7 @@ class App extends React.Component {
   unSubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser, collectionsArray } = this.props;
+    const { setCurrentUser, collections } = this.props;
 
     this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -37,7 +37,8 @@ class App extends React.Component {
       }
 
       setCurrentUser(userAuth);
-      addCollectionAndDocuments("collections", collectionsArray);
+      addCollectionAndDocuments("collections", collections);
+      console.log(collections);
     });
   }
   componentWillUnmount() {
@@ -70,7 +71,7 @@ class App extends React.Component {
 
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser,
-  collectionsArray: selectCollectionsForPreview
+  collections: selectCollectionsForPreview
 });
 
 const mapDispatchToProps = dispatch => ({
